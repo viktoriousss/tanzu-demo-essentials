@@ -1,0 +1,5 @@
+#@ load("@ytt:data", "data")
+---
+metadata:
+  name: #@ data.values.metadata.name
+  namespace: #@ data.values.metadata.namespace

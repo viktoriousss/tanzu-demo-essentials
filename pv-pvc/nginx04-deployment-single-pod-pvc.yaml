@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx04
+  name: nginx04
+  namespace: pv
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx04
+  template:
+    metadata:
+      labels:
+        app: nginx04
+    spec:
+      volumes:
+      - name: pvc04
+        persistentVolumeClaim:
+          claimName: pvc04
+      tolerations:
+      - key: "node.kubernetes.io/unreachable"
+        operator: "Exists"
+        effect: "NoExecute"
+        tolerationSeconds: 10
+      - key: "node.kubernetes.io/not-ready"
+        operator: "Exists"
+        effect: "NoExecute"
+        tolerationSeconds: 10	
+      containers:
+      - name: nginx04
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        startupProbe:
+          httpGet:
+            path: /pvc.html
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 3
+        volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: pvc04
+      # regcred contains Dockerhub credentials, remove if not necessary
+      imagePullSecrets:
+      - name: regcred

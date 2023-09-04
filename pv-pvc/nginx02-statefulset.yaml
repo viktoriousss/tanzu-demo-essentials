@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  labels:
+    app: nginx02
+  name: nginx02
+  namespace: pv
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nginx02
+  template:
+    metadata:
+      labels:
+        app: nginx02
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: pvc02
+      # regcred contains Dockerhub credentials, remove if not necessary
+      imagePullSecrets:
+      - name: regcred
+  volumeClaimTemplates:
+  - metadata:
+      name: pvc02
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Gi

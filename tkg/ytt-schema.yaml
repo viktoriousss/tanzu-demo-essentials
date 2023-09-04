@@ -1,0 +1,6 @@
+#@data/values-schema
+---
+#! Schema contents
+metadata:
+  name: "tkg02"
+  namespace: "ns01"

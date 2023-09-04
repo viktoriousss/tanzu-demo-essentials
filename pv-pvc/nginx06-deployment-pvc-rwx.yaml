@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx06
+  name: nginx06
+  namespace: pv
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx06
+  template:
+    metadata:
+      labels:
+        app: nginx06
+    spec:
+      volumes:
+      - name: pvc06
+        persistentVolumeClaim:
+          claimName: pvc06
+      tolerations:
+      - key: "node.kubernetes.io/unreachable"
+        operator: "Exists"
+        effect: "NoExecute"
+        tolerationSeconds: 10
+      - key: "node.kubernetes.io/not-ready"
+        operator: "Exists"
+        effect: "NoExecute"
+        tolerationSeconds: 10	
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        startupProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          successThreshold: 1
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          failureThreshold: 3
+        volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: pvc06
+      # regcred contains Dockerhub credentials, remove if not necessary
+      imagePullSecrets:
+      - name: regcred

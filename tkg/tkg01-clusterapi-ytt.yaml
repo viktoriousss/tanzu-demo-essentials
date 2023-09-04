@@ -1,0 +1,26 @@
+apiVersion: run.tanzu.vmware.com/v1alpha2
+kind: TanzuKubernetesCluster
+metadata:
+  name: <tkg-cluster-name>
+  namespace: <vcenter-wcp-namespace-name>
+spec:
+  topology:
+    controlPlane:
+      replicas: 1
+      vmClass: best-effort-medium
+      storageClass: <vcenter-wcp-storageclass>
+      tkr:  
+        reference:
+          name: v1.22.9---vmware.1-tkg.1.cc71bc8
+    nodePools:
+    - name: worker-nodepool-a1
+      replicas: 3
+      vmClass: best-effort-large
+      storageClass: <vcenter-wcp-storageclass>
+      tkr:  
+        reference:
+          name: v1.22.9---vmware.1-tkg.1.cc71bc8
+  settings:
+    storage:
+      classes: [<vcenter-wcp-storageclass>]
+      defaultClass: <vcenter-wcp-storageclass>

@@ -1,0 +1,26 @@
+apiVersion: run.tanzu.vmware.com/v1alpha2
+kind: TanzuKubernetesCluster
+metadata:
+  name: tkg01
+  namespace: ns01
+spec:
+  topology:
+    controlPlane:
+      replicas: 3
+      vmClass: best-effort-medium
+      storageClass: vc01cl01-t0compute
+      tkr:
+        reference:
+          name: v1.23.8---vmware.3-tkg.1
+    nodePools:
+    - name: worker-nodepool-a1
+      replicas: 3
+      vmClass: best-effort-large
+      storageClass: vc01cl01-t0compute
+      tkr:
+        reference:
+          name: v1.23.8---vmware.3-tkg.1
+  settings:
+    storage:
+      classes: [vc01cl01-t0compute]
+      defaultClass: vc01cl01-t0compute

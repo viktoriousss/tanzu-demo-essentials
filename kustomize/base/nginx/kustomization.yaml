@@ -1,0 +1,14 @@
+
+resources: 
+- nginx-deployment.yaml
+- nginx-svc.yaml
+
+commonLabels:
+  app: nginx01
+
+commonAnnotations:
+  app: mydemo-annontation
+
+configMapGenerator:
+- name: nginx-config
+  env: config.properties
