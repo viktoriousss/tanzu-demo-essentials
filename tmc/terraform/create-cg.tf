@@ -4,7 +4,7 @@ resource "tanzu-mission-control_cluster_group" "viktorious-tf" {
   meta {
     description = "Cluster group through terraform"
     labels = {
-      "owner" : "vvandenberg"
+      "owner" : var.tmc-owner
     }
   }
 }

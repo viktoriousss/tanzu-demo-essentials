@@ -12,13 +12,13 @@ resource "tanzu-mission-control_git_repository" "github-viktorious-microservices
 
   meta {
     description = "GIT repo created by Terraform"
-    labels      = { "owner" : "vvandenberg" }
+    labels      = { "owner" : var.tmc-owner }
   }
 
   spec {
     url                = "https://github.com/viktoriousss/microservices-demo.git" # Required
     secret_ref         = ""
-    interval           = "5m"    # Default: 5m
+    interval           = "1m"    # Default: 5m
     git_implementation = "GO_GIT" # Default: GO_GIT
     #ref {
     #  branch = ""

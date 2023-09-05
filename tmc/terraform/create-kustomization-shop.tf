@@ -12,17 +12,18 @@ resource "tanzu-mission-control_kustomization" "microservices-demo" {
 
   meta {
     description = "Kustomization created by Terraform"
-    labels      = { "key" : "value" }
+    labels      = { "owner" : var.tmc-owner }
   }
 
   spec {
-    path             = "microservices-demo/kustomize" # Required
+    path             = "kustomize" # Required
     prune            = false
     interval         = "1m" # Default: 5m
-    target_namespace = "shop"
+    target_namespace = var.tmc-target_namespace
     source {
       name      = "github-viktorious-microservices"      # Required
       namespace = "tanzu-continuousdelivery-resources" # Required
     }
   }
+  depends_on = [ tanzu-mission-control_cluster.create_tkgs_workload ]
 }

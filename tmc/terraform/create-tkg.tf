@@ -1,11 +1,11 @@
 # Create Tanzu Mission Control Tanzu Kubernetes Grid Service workload cluster entry
 resource "tanzu-mission-control_cluster" "create_tkgs_workload" {
-  management_cluster_name = "vvandenberg-h2o-mgmt"
-  provisioner_name        = "ns01"
-  name                    = "tkg01"
+  management_cluster_name = var.tmc-management_cluster_name
+  provisioner_name        = var.tmc-provisioner_name
+  name                    = var.tmc-tkg_cluster_name
 
   meta {
-    labels = { "key" : "test" }
+    labels = { "owner" : var.tmc-owner }
   }
 
   spec {
@@ -33,13 +33,13 @@ resource "tanzu-mission-control_cluster" "create_tkgs_workload" {
       }
 
       distribution {
-        version = "v1.23.8---vmware.2-tkg.2-zshippable"
+        version = "v1.23.8---vmware.3-tkg.1"
       }
 
       topology {
         control_plane {
-          class         = "best-effort-xsmall"
-          storage_class = "wcpglobal-storage-profile"
+          class         = "best-effort-medium"
+          storage_class = "vc01cl01-t0compute"
           # storage class is either `wcpglobal-storage-profile` or `gc-storage-profile`
           high_availability = false
           volumes {
@@ -51,7 +51,7 @@ resource "tanzu-mission-control_cluster" "create_tkgs_workload" {
         }
         node_pools {
           spec {
-            worker_node_count = "1"
+            worker_node_count = "3"
             cloud_label = {
               "key1" : "val1"
             }
@@ -60,8 +60,8 @@ resource "tanzu-mission-control_cluster" "create_tkgs_workload" {
             }
 
             tkg_service_vsphere {
-              class          = "best-effort-xsmall"
-              storage_class  = "wcpglobal-storage-profile"
+              class          = "best-effort-medium"
+              storage_class  = "vc01cl01-t0compute"
               #failure_domain = "domain-c8"
               # storage class is either `wcpglobal-storage-profile` or `gc-storage-profile`
               volumes {
