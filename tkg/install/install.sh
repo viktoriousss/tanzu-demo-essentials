@@ -1,17 +1,6 @@
 #
 # TKG prerequisites installation script that works for Ubuntu 22.04.2
 #
-# You need to download tanzu-cli-bundle-linux-amd64.tgz from VMware Customerconnect.
-# Copy the file to /home/$USER/tanzu in your VM
-#
-# tanzu-cli-bundle-linux-amd64.tgz 2.1   = Tanzu CLI v0.28.0
-# tanzu-cli-bundle-linux-amd64.tgz 2.1.1 = Tanzu CLI v0.28.1
-#
-# The tanzu-cli-bundle-linux-amd64.tgz filename doesn't tell which Tanzu CLI version is included.
-
-export TANZU_CLI_VERSION=v0.28.1
-
-#
 
 read -p "Do you want to install Docker? Choose n if you've already installed Docker (y/n) " choice
 
@@ -49,12 +38,14 @@ sudo sysctl net/netfilter/nf_conntrack_max=131072
 # Install and configure Tanzu CLI
 #
 
-cd /home/$USER/tanzu
-tar xvzf tanzu-cli-bundle-linux-amd64.tar.gz
-cd cli/
-sudo install core/$TANZU_CLI_VERSION/tanzu-core-linux_amd64 /usr/local/bin/tanzu
-source <(tanzu completion bash)
-echo "source <(tanzu completion bash)" >> ~/.bashrc
+sudo apt update
+sudo apt install -y ca-certificates curl gpg
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://packages.vmware.com/tools/keys/VMWARE-PACKAGING-GPG-RSA-KEY.pub | sudo gpg --dearmor -o /etc/apt/keyrings/tanzu-archive-keyring.gpg
+echo "deb [signed-by=/etc/apt/keyrings/tanzu-archive-keyring.gpg] https://storage.googleapis.com/tanzu-cli-os-packages/apt tanzu-cli-jessie main" | sudo tee /etc/apt/sources.list.d/tanzu.list
+sudo apt update
+sudo apt install -y tanzu-cli
+
 tanzu init
 tanzu version
 
