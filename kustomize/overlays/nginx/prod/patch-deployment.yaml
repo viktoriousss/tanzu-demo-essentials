@@ -3,4 +3,4 @@ kind: Deployment
 metadata:
   name: nginx01
 spec:
-  replicas: 2
+  replicas: 5
