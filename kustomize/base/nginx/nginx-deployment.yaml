@@ -46,6 +46,8 @@ spec:
         volumeMounts:
         - name: nginx-index-config
           mountPath: /usr/share/nginx/html
+        - name: nginx-empty
+          mountPath: /var/cache/nginx/client_temp          
         startupProbe:
           httpGet:
             path: /
@@ -72,6 +74,8 @@ spec:
       - name: nginx-index-config
         configMap:
           name: nginx-config
+      - name: nginx-empty
+        emptyDir: { }
       # regcred contains Dockerhub credentials, remove if not necessary
       imagePullSecrets:
       - name: regcred
