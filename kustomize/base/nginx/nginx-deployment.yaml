@@ -41,8 +41,8 @@ spec:
             type: RuntimeDefault
         image: nginx:latest
         ports:
-        - containerPort: 8080
-        - containerPort: 8443
+        - containerPort: 80
+        - containerPort: 80
         volumeMounts:
         - name: nginx-index-config
           mountPath: /usr/share/nginx/html
@@ -51,14 +51,14 @@ spec:
         startupProbe:
           httpGet:
             path: /
-            port: 8080
+            port: 80
           initialDelaySeconds: 30
           periodSeconds: 5
           failureThreshold: 3
         readinessProbe:
           httpGet:
             path: /
-            port: 8080
+            port: 80
           successThreshold: 1
           initialDelaySeconds: 30
           periodSeconds: 5
