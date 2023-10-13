@@ -12,12 +12,12 @@ spec:
       labels:
         app: web
     spec:
-      serviceAccountName: default
-      securityContext:
-        fsGroup: 1000
-        runAsGroup: 1000
-        runAsNonRoot: true
-        runAsUser: 1000
+      # serviceAccountName: default
+      # securityContext:
+      #  fsGroup: 1000
+      #  runAsGroup: 1000
+      #  runAsNonRoot: true
+      #  runAsUser: 1000
       tolerations:
       - key: "node.kubernetes.io/unreachable"
         operator: "Exists"
