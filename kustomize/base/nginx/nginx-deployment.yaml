@@ -4,8 +4,19 @@ metadata:
   name: nginx01
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: web
   template:
+    metadata:
+      labels:
+        app: web
     spec:
+      securityContext:
+        fsGroup: 1000
+        runAsGroup: 1000
+        runAsNonRoot: true
+        runAsUser: 1000
       tolerations:
       - key: "node.kubernetes.io/unreachable"
         operator: "Exists"
