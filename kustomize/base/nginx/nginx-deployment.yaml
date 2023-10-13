@@ -6,16 +6,6 @@ spec:
   replicas: 1
   template:
     spec:
-      securityContext:
-        allowPrivilegeEscalation: false
-        capabilities:
-          drop:
-            - ALL
-        privileged: false
-        readOnlyRootFilesystem: true
-        runAsNonRoot: true
-        seccompProfile:
-          type: RuntimeDefault
       tolerations:
       - key: "node.kubernetes.io/unreachable"
         operator: "Exists"
@@ -27,6 +17,16 @@ spec:
         tolerationSeconds: 10	
       containers:
       - name: nginx
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+              - ALL
+          privileged: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          seccompProfile:
+            type: RuntimeDefault
         image: nginx:latest
         ports:
         - containerPort: 80
