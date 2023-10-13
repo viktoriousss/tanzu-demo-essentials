@@ -49,7 +49,9 @@ spec:
         - name: nginx-empty
           mountPath: /var/cache/nginx/client_temp 
         - name: nginx-proxytemp
-          mountPath: /var/cache/nginx/proxy_temp       
+          mountPath: /var/cache/nginx/proxy_temp
+        - name: nginx-fastcgi
+          mountPath: /var/cache/nginx/fastcgi_temp    
         startupProbe:
           httpGet:
             path: /
@@ -79,6 +81,8 @@ spec:
       - name: nginx-empty
         emptyDir: { }
       - name: nginx-proxytemp
+        emptyDir: { }
+      - name: nginx-fastcgi
         emptyDir: { }
       # regcred contains Dockerhub credentials, remove if not necessary
       imagePullSecrets:
