@@ -12,6 +12,7 @@ spec:
       labels:
         app: web
     spec:
+      serviceAccountName: default
       securityContext:
         fsGroup: 1000
         runAsGroup: 1000
