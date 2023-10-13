@@ -36,7 +36,7 @@ spec:
               - ALL
           privileged: false
           readOnlyRootFilesystem: false
-          runAsNonRoot: true
+          runAsNonRoot: false
           seccompProfile:
             type: RuntimeDefault
         image: nginx:latest
