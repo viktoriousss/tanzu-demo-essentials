@@ -47,7 +47,9 @@ spec:
         - name: nginx-index-config
           mountPath: /usr/share/nginx/html
         - name: nginx-empty
-          mountPath: /var/cache/nginx/client_temp          
+          mountPath: /var/cache/nginx/client_temp 
+        - name: nginx-proxytemp
+          mountPath: /var/cache/nginx/proxy_temp       
         startupProbe:
           httpGet:
             path: /
@@ -75,6 +77,8 @@ spec:
         configMap:
           name: nginx-config
       - name: nginx-empty
+        emptyDir: { }
+      - name: nginx-proxytemp
         emptyDir: { }
       # regcred contains Dockerhub credentials, remove if not necessary
       imagePullSecrets:
