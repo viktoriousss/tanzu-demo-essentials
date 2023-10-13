@@ -38,7 +38,7 @@ spec:
           readOnlyRootFilesystem: false
           runAsNonRoot: true
           seccompProfile:
-            type: RuntimeDefault
+            type: localhost
         image: nginx:latest
         ports:
         - containerPort: 8080
