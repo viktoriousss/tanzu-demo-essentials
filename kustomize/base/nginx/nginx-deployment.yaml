@@ -51,7 +51,9 @@ spec:
         - name: nginx-proxytemp
           mountPath: /var/cache/nginx/proxy_temp
         - name: nginx-fastcgi
-          mountPath: /var/cache/nginx/fastcgi_temp    
+          mountPath: /var/cache/nginx/fastcgi_temp
+        - name: nginx-uwsgi
+          mountPath: /var/cache/nginx/uwsgi_temp
         startupProbe:
           httpGet:
             path: /
@@ -83,6 +85,8 @@ spec:
       - name: nginx-proxytemp
         emptyDir: { }
       - name: nginx-fastcgi
+        emptyDir: { }
+      - name: nginx-uwsgi
         emptyDir: { }
       # regcred contains Dockerhub credentials, remove if not necessary
       imagePullSecrets:
