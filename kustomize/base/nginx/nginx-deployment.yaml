@@ -34,7 +34,7 @@ spec:
           capabilities:
             drop:
               - ALL
-          privileged: false
+          privileged: true
           readOnlyRootFilesystem: false
           runAsNonRoot: false
           seccompProfile:
