@@ -14,7 +14,7 @@ spec:
     class: tanzukubernetescluster
     version: v1.26.5---vmware.2-fips.1-tkg
     controlPlane:
-      replicas: 3
+      replicas: 1
     workers:
       machineDeployments:
         - class: node-pool
@@ -22,12 +22,26 @@ spec:
           replicas: 4
     variables:
       - name: vmClass
-        value: best-effort-small
+        value: best-effort-2xlarge
       - name: storageClass
         value: vc01cl01-t0compute
       - name: defaultStorageClass
         value: vc01cl01-t0compute
-      #Add 70GB local storage to each K8S worker node
+      #Add 125G+70GB local storage to each K8S control node
+      #This is mandatory because TMC is checking this, not really required by TAP
+      - name: controlPlaneVolumes
+        value:
+        - capacity:
+            storage: 70G
+          mountPath: /var/lib/containerd
+          name: extrastorage01
+          storageClass: vc01cl01-t0compute
+        - capacity:
+            storage: 125G
+          mountPath: /var/lib/kubelet
+          name: kubelet
+          storageClass: vc01cl01-t0compute
+      #Add 125G+70GB local storage to each K8S worker node
       - name: nodePoolVolumes
         value:
         - capacity:
@@ -35,3 +49,9 @@ spec:
           mountPath: /var/lib/containerd
           name: extrastorage01
           storageClass: vc01cl01-t0compute
+        - capacity:
+            storage: 125G
+          mountPath: /var/lib/kubelet
+          name: kubelet
+          storageClass: vc01cl01-t0compute           
+          
