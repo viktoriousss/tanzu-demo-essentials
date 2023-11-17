@@ -46,4 +46,5 @@ spec:
               wget -qO- $(params.source-url) | tar xvz -m
               pwd
               ls -lh
+              ls ./app/html/
               go test ./... -coverprofile cover.out
