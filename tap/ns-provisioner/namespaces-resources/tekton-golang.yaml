@@ -44,4 +44,6 @@ spec:
             script: |-
               cd `mktemp -d`
               wget -qO- $(params.source-url) | tar xvz -m
+              pwd
+              ls -lh
               go test ./... -coverprofile cover.out
