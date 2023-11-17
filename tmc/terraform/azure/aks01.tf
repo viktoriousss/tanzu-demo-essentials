@@ -26,7 +26,10 @@ resource "tanzu-mission-control_akscluster" "AKS01" {
         count   = 4
         mode    = "SYSTEM"
         vm_size = "Standard_B4ms"
-        os_disk_size_gb = 125   
+        os_disk_size_gb = 125
+        upgrade_config {
+          max_surge = "1"
+          }
       }
     }
 
