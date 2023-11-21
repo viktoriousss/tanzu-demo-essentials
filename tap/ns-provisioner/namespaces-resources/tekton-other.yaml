@@ -10,7 +10,8 @@ kind: Pipeline
 metadata:
   name: tekton-pipeline-other
   labels:
-    apps.tanzu.vmware.com/has-tests: "true"
+    apps.tanzu.vmware.com/pipeline: test
+#!    apps.tanzu.vmware.com/has-tests: "true"
 #!    apps.tanzu.vmware.com/language: golang
   annotations:
     kapp.k14s.io/create-strategy: fallback-on-update
