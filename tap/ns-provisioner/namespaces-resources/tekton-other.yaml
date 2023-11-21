@@ -9,7 +9,8 @@ apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: tekton-pipeline-other
-#!  labels:
+  labels:
+    apps.tanzu.vmware.com/has-tests: "true"
 #!    apps.tanzu.vmware.com/language: golang
   annotations:
     kapp.k14s.io/create-strategy: fallback-on-update
