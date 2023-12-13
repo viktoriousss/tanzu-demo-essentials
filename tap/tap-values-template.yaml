@@ -1,0 +1,61 @@
+profile: full
+ceip_policy_disclosed: false
+shared:
+  ingress_domain: tap.viktoriouslab.nl
+  image_registry:
+    project_path: viktorioustap.azurecr.io/tap20231213
+    secret:
+      name: azure-registry
+      namespace: tap-secret
+tap_telemetry:
+  customer_entitlement_account_number: ""
+
+# Use a git repository for K8S yaml distribution
+#ootb_supply_chain_testing_scanning:
+#  gitops:
+#    ssh_secret: git-https
+#    branch: main
+#    commit_message: "Update from TAP Supply Chain Choreographer"
+#    server_address: https://github.com/
+#    repository_owner: viktoriousss # github-account
+#    repository_name: tap-deliveries
+
+namespace_provisioner:
+  controller: false
+  sync_period: 30s
+  # Namespace provisioner - list of namespaces
+  gitops_install:
+    ref: origin/main
+    subPath: tap/ns-provisioner/namespaces
+    url: https://github.com/viktoriousss/tanzu-demo-essentials.git
+  # Namespace provisioner - additional resources
+  additional_sources:
+    - git:
+        ref: origin/main
+        subPath: tap/ns-provisioner/namespaces-resources
+        url: https://github.com/viktoriousss/tanzu-demo-essentials.git
+      #path: _ytt_lib/testing-scanning-supplychain-parameterized-setup
+
+supply_chain: testing_scanning
+metadata_store:
+  ns_for_export_app_cert: "*"
+
+tap_gui:
+  # TLS certificate configuration for TAP-GUI
+  #tls:
+  #  namespace: cert-manager
+  #  secretName: tap-gui
+  app_config:
+    customize:
+      custom_name: "viktorious.nl Developer Portal"
+    organization:
+      name: "viktorious.nl"
+    # GitHub authentication configuration
+    auth:
+      allowGuestAccess: false
+      environment: development
+      providers:
+        github: # This is for github OAuth authentication to the TAP portal. Configure a new OAuth app for TAP here: https://github.com/settings/developers. Homepage URL is http://tap-gui.<ingress-domain configured earlier>.
+          development:
+            clientId: "<CLIENT-ID>"  # you need to get this value from GitHub Developer Settings OAuth2 page
+            clientSecret: "<CLIENT-SECRET>"
