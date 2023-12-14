@@ -4,3 +4,4 @@
 tap/git-secret.yaml
 tap/secrets/git-secret.yaml
 tmc/registration/tmc-registration-tkgs-21086.yaml
+tap/secrets/workload-git-auth.yaml

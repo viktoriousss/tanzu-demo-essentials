@@ -5,20 +5,20 @@ shared:
   image_registry:
     project_path: viktorioustap.azurecr.io/tap20231213
     secret:
-      name: azure-registry
-      namespace: tap-secret
+      name: registry-credentials
+      namespace: tap-install
 tap_telemetry:
   customer_entitlement_account_number: ""
 
 # Use a git repository for K8S yaml distribution
-#ootb_supply_chain_testing_scanning:
-#  gitops:
-#    ssh_secret: git-https
-#    branch: main
-#    commit_message: "Update from TAP Supply Chain Choreographer"
-#    server_address: https://github.com/
-#    repository_owner: viktoriousss # github-account
-#    repository_name: tap-deliveries
+ootb_supply_chain_testing_scanning:
+  gitops:
+    ssh_secret: git-https-secret
+    branch: main
+    commit_message: "Update from TAP Supply Chain Choreographer"
+    server_address: https://github.com/
+    repository_owner: viktoriousss # github-account
+    repository_name: tap-deliveries
 
 namespace_provisioner:
   controller: false
@@ -31,10 +31,22 @@ namespace_provisioner:
   # Namespace provisioner - additional resources
   additional_sources:
     - git:
+        url: https://github.com/viktoriousss/tanzu-demo-essentials.git  
         ref: origin/main
-        subPath: tap/ns-provisioner/namespaces-resources
-        url: https://github.com/viktoriousss/tanzu-demo-essentials.git
-      #path: _ytt_lib/testing-scanning-supplychain-parameterized-setup
+        subPath: tap/ns-provisioner/namespaces-resources        
+        secretRef:
+          name: git-https-secret # this is the new credential
+          namespace: tap-install
+          #create_export: true
+  #import_data_values_secrets:
+  #  - name: git-https-secret
+  #    namespace: tap-install
+  #    create_export: true
+  # This account is used for doing GitOps with Supply Chain Choreographer
+  default_parameters:
+    supply_chain_service_account:
+      secrets:
+      - git-https-secret
 
 supply_chain: testing_scanning
 metadata_store:
@@ -57,5 +69,5 @@ tap_gui:
       providers:
         github: # This is for github OAuth authentication to the TAP portal. Configure a new OAuth app for TAP here: https://github.com/settings/developers. Homepage URL is http://tap-gui.<ingress-domain configured earlier>.
           development:
-            clientId: "<CLIENT-ID>"  # you need to get this value from GitHub Developer Settings OAuth2 page
-            clientSecret: "<CLIENT-SECRET>"
+            clientId: "<github-clientid>"  # you need to get this value from GitHub Developer Settings OAuth2 page
+            clientSecret: "<github-clientsecret>"
