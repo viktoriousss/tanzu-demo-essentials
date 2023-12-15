@@ -1,3 +1,7 @@
+#############################################################################################
+# General settings for TAP                                                                  #
+# The full installation profile used and the ingress address + default registry is set here #
+#############################################################################################
 profile: full
 ceip_policy_disclosed: false
 shared:
@@ -10,7 +14,9 @@ shared:
 tap_telemetry:
   customer_entitlement_account_number: ""
 
-# Use a git repository for K8S yaml distribution
+#############################################################################################
+# Use a git repository for K8S yaml distribution (using GitOps instead of RegistryOps)      #
+#############################################################################################
 ootb_supply_chain_testing_scanning:
   gitops:
     ssh_secret: git-https-secret
@@ -20,6 +26,12 @@ ootb_supply_chain_testing_scanning:
     repository_owner: viktoriousss # github-account
     repository_name: tap-deliveries
 
+#############################################################################################
+# The namespace provisioner is responsible for setting up developer namespaces in your      #
+# environment. The configuration is contained on a Git Repository and contains the          #
+# namespaces to be created ws well as the default resources that should be added to these   #
+# namespaces.                                                                               #
+#############################################################################################
 namespace_provisioner:
   controller: false
   sync_period: 30s
@@ -52,11 +64,14 @@ supply_chain: testing_scanning
 metadata_store:
   ns_for_export_app_cert: "*"
 
+#############################################################################################
+# Configuration of TAP-GUI specific settings                                                #
+#############################################################################################
 tap_gui:
   # TLS certificate configuration for TAP-GUI
-  #tls:
-  #  namespace: cert-manager
-  #  secretName: tap-gui
+  tls:
+    namespace: cert-manager
+    secretName: tap-gui
   app_config:
     customize:
       custom_name: "viktorious.nl Developer Portal"
@@ -69,5 +84,5 @@ tap_gui:
       providers:
         github: # This is for github OAuth authentication to the TAP portal. Configure a new OAuth app for TAP here: https://github.com/settings/developers. Homepage URL is http://tap-gui.<ingress-domain configured earlier>.
           development:
-            clientId: "<github-clientid>"  # you need to get this value from GitHub Developer Settings OAuth2 page
-            clientSecret: "<github-clientsecret>"
+            clientId: "<CLIENT-ID>"  # you need to get this value from GitHub Developer Settings OAuth2 page
+            clientSecret: "<CLIENT-SECRET>"

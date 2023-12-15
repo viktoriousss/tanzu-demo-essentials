@@ -5,3 +5,5 @@ tap/git-secret.yaml
 tap/secrets/git-secret.yaml
 tmc/registration/tmc-registration-tkgs-21086.yaml
 tap/secrets/workload-git-auth.yaml
+tap/tls/password-viktorious.txt
+tap/tls/route53-clusterissuer-viktorious.yaml
