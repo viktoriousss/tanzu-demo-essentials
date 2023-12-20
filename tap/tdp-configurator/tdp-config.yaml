@@ -1,0 +1,9 @@
+app:
+  plugins:
+    - name: "@vmware-tanzu/tdp-plugin-techinsights"
+      version: "0.0.2"
+
+backend:
+  plugins:
+    - name: "@vmware-tanzu/tdp-plugin-techinsights-backend"
+      version: "0.0.2"

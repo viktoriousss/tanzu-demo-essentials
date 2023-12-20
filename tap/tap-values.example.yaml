@@ -86,3 +86,8 @@ tap_gui:
           development:
             clientId: "<CLIENT-ID>"  # you need to get this value from GitHub Developer Settings OAuth2 page
             clientSecret: "<CLIENT-SECRET>"
+# Add custom Backstage plugins here                                                         #
+#package_overlays:
+#- name: tap-gui
+#  secrets:
+#  - name: tdp-app-image-overlay-secret

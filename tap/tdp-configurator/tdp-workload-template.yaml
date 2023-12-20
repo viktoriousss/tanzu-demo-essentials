@@ -1,0 +1,22 @@
+#@ load("@ytt:data", "data")
+#@ load("@ytt:base64", "base64")
+---
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: tdp-config
+  labels:
+    apps.tanzu.vmware.com/workload-type: tdp
+    app.kubernetes.io/part-of: tdp-configurator
+spec:
+  build:
+    env:
+      - name: BP_NODE_RUN_SCRIPTS
+        value: 'set-tpb-config,portal:pack'
+      - name: TPB_CONFIG
+        value: /tmp/tpb-config.yaml
+      - name: TPB_CONFIG_STRING
+        value: #@ base64.encode(data.values.tdp_configurator.config)
+  source:
+    image: #@ data.values.tdp_configurator.image
+    subPath: builder
