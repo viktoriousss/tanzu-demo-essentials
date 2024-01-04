@@ -1,0 +1,12 @@
+# -- This feature set enables virtual BGP routers to be created via
+# CiliumBGPPeeringPolicy CRDs.
+bgpControlPlane:
+  # -- Enables the BGP control plane.
+  enabled: true
+
+# -- Configure the kube-proxy replacement in Cilium BPF datapath
+# Valid options are "true", "false", "disabled" (deprecated), "partial" (deprecated), "strict" (deprecated).
+# ref: https://docs.cilium.io/en/stable/network/kubernetes/kubeproxy-free/
+kubeProxyReplacement: "true"
+k8sServiceHost: "192.168.101.201"
+k8sServicePort: "6443"
