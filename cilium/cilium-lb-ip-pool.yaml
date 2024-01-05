@@ -5,3 +5,6 @@ metadata:
 spec:
   cidrs:
   - cidr: "172.16.101.0/24"
+  serviceSelector:
+    matchExpressions:
+      - {key: "io.kubernetes.service.namespace", operator: NotIn, values: ["shop"]}
