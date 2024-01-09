@@ -7,3 +7,4 @@ tmc/registration/tmc-registration-tkgs-21086.yaml
 tap/secrets/workload-git-auth.yaml
 tap/tls/password-viktorious.txt
 tap/tls/route53-clusterissuer-viktorious.yaml
+tap/tap-scripted-installation/00-set-environment-variables-viktorious.sh
