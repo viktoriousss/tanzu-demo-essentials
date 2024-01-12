@@ -1,0 +1,8 @@
+#example values -> change it to your values and rename the file to terraform.tfvars
+tmc-cluster_group = "Cluster Group Name"
+tmc-endpoint = "Your TMC Endpoint"
+tmc-owner = "Your name - used to create an owner label"
+tmc-vmw_cloud_api_token = "TMC API token - required to connect to TMC"
+credential_name = "Azure Credential Name in TMC"
+subscription_id = "Azure SubscriptionID in TMC"
+resource_group = "Azure Resource Group to deploy your cluster to"

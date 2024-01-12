@@ -86,3 +86,8 @@ export TANZU_CLUSTER_ESSENTIALS_FILE=tanzu-cluster-essentials-darwin-amd64-1.5.0
 # 1.5.0: registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:79abddbc3b49b44fc368fede0dab93c266ff7c1fe305e2d555ed52d00361b446
 #
 export TANZU_CLUSTER_ESSENTIALS_INSTALL_BUNDLE=registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:79abddbc3b49b44fc368fede0dab93c266ff7c1fe305e2d555ed52d00361b446
+
+#
+# Name of your TAP Value file
+#
+export TAP_VALUES="tap-values.yaml"

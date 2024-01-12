@@ -1,4 +1,4 @@
-# 07-install-database.sh
+# 06-install-database.sh
 #
 # Run this script in the context of the Kubernetes cluster you're installing TAP to.
 # Use kubectl config set-context to switch to correct cluster prior to running this script.

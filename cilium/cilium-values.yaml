@@ -4,6 +4,10 @@ bgpControlPlane:
   # -- Enables the BGP control plane.
   enabled: true
 
+ingressController:
+  enabled: "true"
+  loadbalancerMode: "dedicated"
+
 # -- Configure the kube-proxy replacement in Cilium BPF datapath
 # Valid options are "true", "false", "disabled" (deprecated), "partial" (deprecated), "strict" (deprecated).
 # ref: https://docs.cilium.io/en/stable/network/kubernetes/kubeproxy-free/

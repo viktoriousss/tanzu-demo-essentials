@@ -5,3 +5,4 @@
 namespaces:
 - name: ns-iterate
 - name: ns-production
+- name: ns-test
