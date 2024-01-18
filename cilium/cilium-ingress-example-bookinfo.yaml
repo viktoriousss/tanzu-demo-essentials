@@ -1,0 +1,35 @@
+# Basic ingress for istio bookinfo demo application, which can be found in below
+# https://raw.githubusercontent.com/istio/istio/release-1.11/samples/bookinfo/platform/kube/bookinfo.yaml
+#
+# Taken from Cilium documentation
+#
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cilium-ingress-bookinfo
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-route53
+spec:
+  ingressClassName: cilium
+  rules:
+  - host: bookinfo.viktoriouslab.nl
+    http:
+      paths:
+      - backend:
+          service:
+            name: details
+            port:
+              number: 9080
+        path: /details
+        pathType: Prefix
+      - backend:
+          service:
+            name: productpage
+            port:
+              number: 9080
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - bookinfo.viktoriouslab.nl
+    secretName: bookinfo-cert
