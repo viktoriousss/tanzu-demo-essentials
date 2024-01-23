@@ -3,6 +3,7 @@
 #! The only required parameter is the name of the namespace. All additional values provided here like scanpolicy and pipeline
 #! for a namespace will be available under data.values for templating additional sources as data.values.scanpolicy and data.values.pipeline respectively
 namespaces:
-- name: ns-iterate
+- name: ns-develop
 - name: ns-production
+- name: ns-stage
 - name: ns-test
