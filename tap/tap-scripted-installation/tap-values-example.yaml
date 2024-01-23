@@ -6,6 +6,7 @@ profile: full
 ceip_policy_disclosed: true
 shared:
   ingress_domain: tap.viktoriouslab.nl
+  ingress_issuer: letsencrypt-route53
   image_registry:
     project_path: <your-tap-registry>
     # This secret is created in step 05/05b

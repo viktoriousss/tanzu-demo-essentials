@@ -11,3 +11,4 @@
 **/tanzu-cluster-essentials-darwin-amd64-1.7.2.tgz
 **/tanzu-cluster-essentials-linux-amd64-1.7.2.tgz
 tap/tap-scripted-installation/08b-tap-configure-tls-and-secrets.sh
+harbor/bitnami-harbor-values-viktorious.yaml
