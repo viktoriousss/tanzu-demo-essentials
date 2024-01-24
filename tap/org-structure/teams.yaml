@@ -1,0 +1,70 @@
+# Original file courtesy Robert Jensen at TanzuDK https://github.com/tanzudk
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: denmark-team
+  description: Denmark
+spec:
+  type: team
+  profile:
+    displayName: Denmark Team
+    email: dk@tanzu.dk
+    picture: https://www.worldometers.info/img/flags/da-flag.gif
+  parent: nordics-org
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: sweden-team
+  description: Sweden
+spec:
+  type: team
+  profile:
+    displayName: Sweden Team
+    email: se@tanzu.dk
+    picture: https://www.worldometers.info/img/flags/sw-flag.gif
+  parent: nordics-org
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: norway-team
+  description: Norway
+spec:
+  type: team
+  profile:
+    displayName: Norway Team
+    email: no@tanzu.dk
+    picture: https://www.worldometers.info/img/flags/no-flag.gif
+  parent: nordics-org
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: dutch-team
+  description: Dutch
+spec:
+  type: team
+  profile:
+    displayName: Dutch Team
+    email: nl@tanzu.dk
+    picture: https://www.worldometers.info/img/flags/nl-flag.gif
+  parent: nordics-org
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: belgian-team
+  description: Belgian
+spec:
+  type: team
+  profile:
+    displayName: Belgian Team
+    email: be@tanzu.dk
+    picture: https://www.worldometers.info/img/flags/be-flag.gif
+  parent: nordics-org
+  children: []

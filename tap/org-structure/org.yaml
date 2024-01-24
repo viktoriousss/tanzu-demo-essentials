@@ -1,0 +1,26 @@
+# Original file courtesy Robert Jensen at TanzuDK https://github.com/tanzudk
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: nordics-org
+  description: The Nordics Organization
+  links:
+    - url: https://tanzu.vmware.com/support
+      title: Tanzu Support Website
+spec:
+  type: organization
+  profile:
+    displayName: Nordics Organization
+    email: nordics@tanzu.dk
+    picture: https://avatars.dicebear.com/api/identicon/info@example.com.svg?background=%23fff&margin=25
+  children: [denmark-team, sweden-team, norway-team, dutch-team, belgian-team]
+---
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: nordics-group
+  description: A Nordics Group Location
+spec:
+  targets:
+    - ./teams.yaml
+    - ./users.yaml

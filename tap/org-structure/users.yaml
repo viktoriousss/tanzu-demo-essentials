@@ -1,0 +1,77 @@
+# Original file courtesy Robert Jensen at TanzuDK https://github.com/tanzudk
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: robert-jensen
+spec:
+  profile:
+    displayName: Robert Jensen
+    email: robert@robert-jensen.dk
+    picture: https://media.licdn.com/dms/image/C4E03AQGxKuRCaUZf9A/profile-displayphoto-shrink_400_400/0/1653650768820?e=1678320000&v=beta&t=pCTwIjPkjbTQcDmXL7lKk4wPUU2ryjDX9zhd9pYIKRM
+  memberOf: [denmark-team, norway-team, base64-team]
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: viktor-van-den-berg
+spec:
+  profile:
+    displayName: Viktor van den Berg
+    email: viktorvdberg@gmail.com
+    picture: https://media.licdn.com/dms/image/D4E03AQHi76HzzoE8Jg/profile-displayphoto-shrink_400_400/0/1668516117162?e=1678320000&v=beta&t=RLFy4nOiqV3Mjw1pQw4iaXSvfiPPWjhlB4QJ02Wxh-g
+  memberOf: [denmark-team, norway-team, sweden-team, dutch-team]
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: mattias-soderberg
+spec:
+  profile:
+    displayName: Mattias Soderberg
+    email: mattiassoderberj@gmail.com
+    picture: https://media.licdn.com/dms/image/C4D03AQEdUl3qHIkAqQ/profile-displayphoto-shrink_400_400/0/1579795766046?e=1678320000&v=beta&t=lqENh2ejiQmsbzKWBtMq2vyVQVI3X9beED0DZhMXq3g
+  memberOf: [sweden-team]
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: david-caron
+spec:
+  profile:
+    displayName: David Caron
+    email: dcaron@vmware.com
+    picture: https://media.licdn.com/dms/image/C4E03AQFqgx4KYA4sdw/profile-displayphoto-shrink_400_400/0/1581519747672?e=1679529600&v=beta&t=71xtrSGZFKr7GTcmUWZlD7on5uDwKjir_-jMzhskhPs
+  memberOf: [dutch-team]
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: niels-teekens
+spec:
+  profile:
+    displayName: Niels Teekens
+    email: nteekens@vmware.com
+    picture: https://media.licdn.com/dms/image/D4E03AQHeohlnDiQPkw/profile-displayphoto-shrink_400_400/0/1669308642605?e=1680739200&v=beta&t=D3epxHQ2knGsyQhxf63bveVL2YVXCedYabG1MDO6zIc
+  memberOf: [dutch-team]
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: neven-cvetkovic
+spec:
+  profile:
+    displayName: Neven Cvetkovic
+    email: ncvetkovic@vmware.com
+    picture: https://media.licdn.com/dms/image/C4E03AQH4yhy9ztNqSA/profile-displayphoto-shrink_400_400/0/1584454199981?e=1680739200&v=beta&t=wtooWHoYNgNsDoVVawoO1Hy83ZamkLAFKM6KlN8vC5Y
+  memberOf: [nordics-org, sweden-team]
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: dieter-hubau
+spec:
+  profile:
+    displayName: Dieter Hubau
+    email: dhubau@gmail.com
+    picture: https://media.licdn.com/dms/image/C4E03AQGYjLBrninLkQ/profile-displayphoto-shrink_200_200/0/1517744856130?e=1681344000&v=beta&t=ev54I0usT0wSNE20OgUAu4MZup7p9AP8AzALjOwtEs4
+  memberOf: [belgian-team]
