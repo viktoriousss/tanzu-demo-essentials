@@ -14,9 +14,11 @@ ingressController:
     type: LoadBalancer
     loadBalancerIP : 172.16.101.100
 
+# Enables Gateway API
 gatewayAPI:
   enabled: "true"
 
+# Enables Hubble
 hubble:  
   relay:
     enabled: "true"
