@@ -1,0 +1,56 @@
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  name: tkg02
+  namespace: ns01
+spec:
+  clusterNetwork:
+    services:
+      cidrBlocks: ["198.51.100.0/12"]
+    pods:
+      cidrBlocks: ["192.0.2.0/16"]
+    serviceDomain: "cluster.local"
+  topology:
+    class: tanzukubernetescluster
+    version: v1.25.7---vmware.3-fips.1-tkg.1
+    controlPlane:
+      replicas: 1
+    workers:
+      machineDeployments:
+        - class: node-pool
+          name: node-pool-1
+          replicas: 4
+    variables:
+      - name: vmClass
+        value: best-effort-2xlarge
+      - name: storageClass
+        value: vc01cl01-t0compute
+      - name: defaultStorageClass
+        value: vc01cl01-t0compute
+      #Add 125G+70GB local storage to each K8S control node
+      #This is mandatory because TMC is checking this, not really required by TAP
+      - name: controlPlaneVolumes
+        value:
+        - capacity:
+            storage: 70G
+          mountPath: /var/lib/containerd
+          name: extrastorage01
+          storageClass: vc01cl01-t0compute
+        - capacity:
+            storage: 70G
+          mountPath: /var/lib/kubelet
+          name: kubelet
+          storageClass: vc01cl01-t0compute
+      #Add 125G+70GB local storage to each K8S worker node
+      - name: nodePoolVolumes
+        value:
+        - capacity:
+            storage: 70G
+          mountPath: /var/lib/containerd
+          name: extrastorage01
+          storageClass: vc01cl01-t0compute
+        - capacity:
+            storage: 70G
+          mountPath: /var/lib/kubelet
+          name: kubelet
+          storageClass: vc01cl01-t0compute

@@ -63,6 +63,17 @@ namespace_provisioner:
       secrets:
       - git-https-secret
 
+#############################################################################################
+# Local source proxy configuration - this is used by Tanzu Developer Portal to upload       #
+# local sourcecode to this repository.                                                      #
+#############################################################################################
+local_source_proxy:
+  repository: "harbor.viktoriouslab.nl/local-tap/vscode-tmp"
+  push_secret:
+    name: lsp-push-credentials
+    namespace: tap-install
+    create_export: true
+
 supply_chain: testing_scanning
 metadata_store:
   ns_for_export_app_cert: "*"
@@ -87,8 +98,18 @@ tap_gui:
       providers:
         github: # This is for github OAuth authentication to the TAP portal. Configure a new OAuth app for TAP here: https://github.com/settings/developers. Homepage URL is http://tap-gui.<ingress-domain configured earlier>.
           development:
-            clientId: ""  # you need to get this value from GitHub Developer Settings OAuth2 page
-            clientSecret: ""
+            clientId: "<clientID>"  # you need to get this value from GitHub Developer Settings OAuth2 page
+            clientSecret: "<clientSecret>"
+    backend:
+      database:
+        client: pg
+        connection:
+          host: postgresql.postgres.svc.cluster.local
+          port: 5432
+          user: admin
+          password: <password>
+          #ssl: { rejectUnauthorized: false } # Set to true if using SSL
+          ssl: false
 #
 #excluded_packages:
 #  - crossplane.tanzu.vmware.com
