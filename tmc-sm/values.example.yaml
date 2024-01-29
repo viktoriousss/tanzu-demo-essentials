@@ -1,0 +1,36 @@
+harborProject: harbor.viktoriouslab.nl/tmc-sm
+dnsZone: tmc.viktoriouslab.nl
+clusterIssuer: tmcsm-issuer
+postgres:
+  userPassword: <password>
+  maxConnections: 300
+minio:
+  username: root
+  password: <password>
+contourEnvoy:
+  serviceType: LoadBalancer
+  #serviceAnnotations: # needed only when specifying load balancer controller specific config like preferred IP
+  #  ako.vmware.com/load-balancer-ip: "10.20.10.100"
+  # when using an auto-assigned IP instead of a preferred IP, please use the following key instead of the serviceAnnotations above
+  # loadBalancerClass: local
+oidc:
+  issuerType: pinniped
+  issuerURL: <issuerURL>
+  clientID: <clientID>
+  clientSecret: <clientSecret>
+trustedCAs:
+  local-ca.pem: | # root CA cert of the cluster issuer in cert-manager, if not a well-known CA
+    -----BEGIN CERTIFICATE-----
+    Certificate of your self-signed root CA. Leave empty if using a well-known authority
+    -----END CERTIFICATE-----
+#alertmanager: # needed only if you want to turn on alerting
+#  criticalAlertReceiver:
+#    slack_configs:
+#    - send_resolved: false
+#      api_url: https://hooks.slack.com/services/...
+#      channel: '#<slack-channel-name>'
+telemetry:
+  ceipOptIn: false
+  eanNumber: "" 
+  ceipAgreement: false
+size: small
