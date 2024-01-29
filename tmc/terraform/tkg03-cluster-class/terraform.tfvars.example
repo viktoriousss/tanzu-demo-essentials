@@ -1,0 +1,30 @@
+#example values -> change it to your values and rename the file to terraform.tfvars
+
+# TMC Connection properties
+tmc-endpoint = <TMC Endpoint URL>
+tmc-vmw_cloud_api_token = <TMC API TOKEN>
+
+# Generic TKG settings
+tmc-management_cluster_name = "vvandenberg-vsphere-wcp"
+tmc-provisioner_name = "ns01"
+tmc-cluster_group_name = "viktorious"
+tmc-tkg_cluster_name = "tkg03"
+tmc-owner = "vvandenberg"
+
+# Cluster specific settings
+tmc-control_plane_replicas = 1
+tmc-worker_replicas = 3
+
+# Kubernetes version
+tmc-kubernetes_version = "v1.26.5+vmware.2-fips.1-tkg.1"
+
+# Control & worker plane size
+# Options
+# - best-effort-xsmall, best-effort-small, best-effort-medium, best-effort-large, best-effort-xlarge, 2x/4x/large
+# - guareanteed-xsmall, guareanteed-small, guareanteed-medium, guareanteed-large, guareanteed-xlarge, 2x/4x/large
+#
+# If you're running a single instance control plane, minimum control_plane_size should be best-effortxlarge
+# for TMC to work as expected
+#
+tmc-control_plane_size = "best-effort-xlarge"
+tmc-worker_plane_size = "best-effort-xlarge"

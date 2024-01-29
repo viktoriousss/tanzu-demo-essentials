@@ -1,0 +1,9 @@
+#example values -> change it to your values and rename the file to terraform.tfvars
+tmc-cluster_group_name = "Cluster Group Name"
+tmc-endpoint = "Your TMC Endpoint"
+tmc-management_cluster_name = "Change this to the name of vSphere management cluster in H2O that will deploy your TKG cluster"
+tmc-owner = "Your name - used to create an owner label"
+tmc-provisioner_name = "Name of the provisioner (vSphere Namespace) that will hold your TKG cluster"
+tmc-target_namespace = "Name of the namespace that will hold the shop app"
+tmc-tkg_cluster_name = "Name of your TKG cluster"
+tmc-vmw_cloud_api_token = "TMC API token - required to connect to TMC"

@@ -10,8 +10,9 @@
 **/tap-values-azure.yaml
 **/tanzu-cluster-essentials-darwin-amd64-1.7.2.tgz
 **/tanzu-cluster-essentials-linux-amd64-1.7.2.tgz
-tap/tap-scripted-installation/08b-tap-configure-tls-and-secrets.sh
-harbor/bitnami-harbor-values-viktorious.yaml
-tmc-sm/trusted-ca.pem
-tmc-sm/values-route53.yaml
-tmc-sm/values.yaml
+**/08b-tap-configure-tls-and-secrets.sh
+**/bitnami-harbor-values-viktorious.yaml
+**/trusted-ca.pem
+**/values-route53.yaml
+**/values.yaml
+**/tkg-cluster-locals.tf
