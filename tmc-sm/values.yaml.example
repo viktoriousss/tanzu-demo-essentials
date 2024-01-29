@@ -2,11 +2,11 @@ harborProject: harbor.viktoriouslab.nl/tmc-sm
 dnsZone: tmc.viktoriouslab.nl
 clusterIssuer: tmcsm-issuer
 postgres:
-  userPassword: VMware1!
+  userPassword: <password>
   maxConnections: 300
 minio:
   username: root
-  password: VMware1!
+  password: <password>
 contourEnvoy:
   serviceType: LoadBalancer
   #serviceAnnotations: # needed only when specifying load balancer controller specific config like preferred IP
