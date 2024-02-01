@@ -3,31 +3,37 @@
 # The full installation profile used and the ingress address + default registry is set here #
 #############################################################################################
 profile: full
+
 ceip_policy_disclosed: true
+
 shared:
   ingress_domain: tap.viktoriouslab.nl
-  ingress_issuer: letsencrypt-route53
+  ingress_issuer: <your-cluster-issuer>
   image_registry:
-    project_path: <your-tap-registry>
-    # This secret is created in step 05/05b
+    project_path: <registry to store artifacts>
     secret:
       name: tap-registry
       namespace: tap-install
+
 tap_telemetry:
   customer_entitlement_account_number: ""
+
+supply_chain: testing_scanning
+
+metadata_store:
+  ns_for_export_app_cert: "*"
 
 #############################################################################################
 # Use a git repository for K8S yaml distribution (using GitOps instead of RegistryOps)      #
 #############################################################################################
 ootb_supply_chain_testing_scanning:
   gitops:
-    # This secret contains the credentials for the git repossh_secret: git-https-secret:
+    ssh_secret: git-https-secret
     branch: main
     commit_message: "Update from TAP Supply Chain Choreographer"
     server_address: https://github.com/
-    # Github-account we're using:
-    repository_owner: viktoriousss 
-    repository_name: tap-deliveries
+    repository_owner: viktoriousss  # github-account
+    repository_name: tap-deliveries # github-repository
 
 #############################################################################################
 # The namespace provisioner is responsible for setting up developer namespaces in your      #
@@ -66,17 +72,21 @@ namespace_provisioner:
 #############################################################################################
 # Local source proxy configuration - this is used by Tanzu Developer Portal to upload       #
 # local sourcecode to this repository.                                                      #
+#                                                                                           #
+# Secrets (lsp-push-credentials & lsp-pull-credentials) should be exported, either through  #
+# create_export: true or a secret export YAML. See ./secrets/lsp-secrets.example.yaml       #
 #############################################################################################
 local_source_proxy:
   repository: "harbor.viktoriouslab.nl/local-tap/vscode-tmp"
   push_secret:
     name: lsp-push-credentials
     namespace: tap-install
-    create_export: true
-
-supply_chain: testing_scanning
-metadata_store:
-  ns_for_export_app_cert: "*"
+    create_export: false
+  
+  pull_secret:
+    name: lsp-pull-credentials
+    namespace: tap-install
+    create_export: false
 
 #############################################################################################
 # Configuration of TAP-GUI specific settings                                                #
@@ -98,7 +108,7 @@ tap_gui:
       providers:
         github: # This is for github OAuth authentication to the TAP portal. Configure a new OAuth app for TAP here: https://github.com/settings/developers. Homepage URL is http://tap-gui.<ingress-domain configured earlier>.
           development:
-            clientId: "<clientID>"  # you need to get this value from GitHub Developer Settings OAuth2 page
+            clientId: "<clientId>"  # you need to get this value from GitHub Developer Settings OAuth2 page
             clientSecret: "<clientSecret>"
     backend:
       database:
@@ -107,7 +117,7 @@ tap_gui:
           host: postgresql.postgres.svc.cluster.local
           port: 5432
           user: admin
-          password: <password>
+          password: VMware1!
           #ssl: { rejectUnauthorized: false } # Set to true if using SSL
           ssl: false
 #
@@ -119,4 +129,3 @@ tap_gui:
 #- name: tap-gui
 #  secrets:
 #  - name: tdp-app-image-overlay-secret
-

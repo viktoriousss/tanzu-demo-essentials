@@ -16,3 +16,4 @@
 **/values-route53.yaml
 **/values.yaml
 **/tkg-cluster-locals.tf
+tap/secrets/lsp-secrets.yaml
