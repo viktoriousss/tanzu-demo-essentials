@@ -7,10 +7,10 @@ profile: full
 ceip_policy_disclosed: true
 
 shared:
-  ingress_domain: tap.azure.viktoriouslab.nl
+  ingress_domain: <INGRESS_DOMAIN>
   ingress_issuer: letsencrypt-route53
   image_registry:
-    project_path: tapregistry20240205.azurecr.io/tap
+    project_path: <MY_REGISTRY>/tap
     secret:
       name: tap-registry
       namespace: tap-install
@@ -33,8 +33,8 @@ ootb_supply_chain_testing_scanning:
     branch: main
     commit_message: "Update from TAP Supply Chain Choreographer"
     server_address: https://github.com/
-    repository_owner: viktoriousss # github-account
-    repository_name: tap-deliveries # github-repository
+    repository_owner: <REPOSITORY_OWNER> # github-account
+    repository_name: <REPOSITORY_NAME>s # github-repository
 
 #############################################################################################
 # The namespace provisioner is responsible for setting up developer namespaces in your      #
@@ -122,8 +122,8 @@ tap_gui:
       providers:
         github: # This is for github OAuth authentication to the TAP portal. Configure a new OAuth app for TAP here: https://github.com/settings/developers. Homepage URL is http://tap-gui.<ingress-domain configured earlier>.
           development:
-            clientId: "<githubid>"  # you need to get this value from GitHub Developer Settings OAuth2 page
-            clientSecret: "<githubsecret>" 
+            clientId: "<CLIENTID>"  # you need to get this value from GitHub Developer Settings OAuth2 page
+            clientSecret: "<CLIENTSECRET>" 
     integrations:
       github:
         - host: github.com
