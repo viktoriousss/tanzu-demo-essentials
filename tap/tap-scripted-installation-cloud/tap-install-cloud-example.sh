@@ -129,7 +129,7 @@ kubectl apply -f ../secrets/lsp-secret-exports.yaml
 tanzu package install tap -p tap.tanzu.vmware.com -v $TAP_VERSION --values-file $TAP_VALUES -n tap-install
 
 # Wait
-echo "Press space bar to continue..."
+echo "Press space bar to continue...(after all TAP packages have reconciled!)"
 
 # Read a single character from the user input
 read -n 1 key
