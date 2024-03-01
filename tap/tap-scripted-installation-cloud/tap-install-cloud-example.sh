@@ -10,7 +10,7 @@ CLIENTID=""                         # You need to get this value from GitHub Dev
 CLIENTSECRET="" # You need to get this value from GitHub Developer Settings OAuth2 page
 
 export TAP_VERSION="1.7.3"                              # TAP Version you're installing
-export TAP_VALUES="tap-values-azure.yaml"               # TAP values file you're using
+export TAP_VALUES="tap-values-cloud.yaml"               # TAP values file you're using
 
 # Database settings for TAP-GUI persistence. You can leave it as it is.
 # If you're changing this you need to manually update the tap-values.yaml file
