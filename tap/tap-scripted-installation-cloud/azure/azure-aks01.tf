@@ -1,4 +1,7 @@
-
+resource "azurerm_resource_group" "tap" {
+  name     = "TAP"
+  location = "West Europe"
+}
 resource "azurerm_kubernetes_cluster" "tapaks01" {
   name                = "tapaks01"
   resource_group_name = azurerm_resource_group.tap.name

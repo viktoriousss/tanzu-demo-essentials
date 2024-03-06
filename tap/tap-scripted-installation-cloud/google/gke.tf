@@ -1,6 +1,11 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
+variable "location" {
+  default = "europe-west1-b"
+  description = "location"
+}
+
 variable "gke_num_nodes" {
   default     = 3
   description = "number of gke nodes"
@@ -13,8 +18,8 @@ data "google_container_engine_versions" "gke_version" {
 }
 
 resource "google_container_cluster" "primary" {
-  name     = "${var.project_id}-gke"
-  location = var.region
+  name     = "tapgke01"
+  location = var.location
   deletion_protection = false
 
   # We can't create a cluster with no node pool defined, but we want to only use
@@ -30,9 +35,9 @@ resource "google_container_cluster" "primary" {
 # Separately Managed Node Pool
 resource "google_container_node_pool" "primary_nodes" {
   name       = google_container_cluster.primary.name
-  location   = var.region
-  cluster  = google_container_cluster.primary.name  
-  version = data.google_container_engine_versions.gke_version.release_channel_latest_version["STABLE"]
+  location   = var.location
+  cluster    = google_container_cluster.primary.name  
+  version    = data.google_container_engine_versions.gke_version.release_channel_latest_version["STABLE"]
   node_count = var.gke_num_nodes
 
   node_config {
@@ -52,6 +57,7 @@ resource "google_container_node_pool" "primary_nodes" {
     metadata = {
       disable-legacy-endpoints = "true"
     }
+    spot = true
   }
 }
 

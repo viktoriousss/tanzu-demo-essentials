@@ -1,12 +1,12 @@
-resource "azurerm_resource_group" "tap" {
-  name     = "TAP"
+resource "azurerm_resource_group" "tap-registry" {
+  name     = "tap-registry"
   location = "West Europe"
 }
 
 resource "azurerm_container_registry" "acr" {
   name                = "tapregistry20240205"
-  resource_group_name = azurerm_resource_group.tap.name
-  location            = azurerm_resource_group.tap.location
+  resource_group_name = azurerm_resource_group.tap-registry.name
+  location            = azurerm_resource_group.tap-registry.location
   sku                 = "Basic"
   admin_enabled       = true
 }

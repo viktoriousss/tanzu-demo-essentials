@@ -2,12 +2,12 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   namespace: cert-manager
-  name: tap-gui
+  name: tap-gui-azure
 spec:
-  commonName: tap-gui.tap-azure.viktoriouslab.nl
+  commonName: tap-gui.tap.azure.viktoriouslab.nl
   dnsNames:
-    - tap-gui.tap-azure.viktoriouslab.nl
+    - tap-gui.tap.azure.viktoriouslab.nl
   issuerRef:
     name: letsencrypt-route53
     kind: ClusterIssuer
-  secretName: tap-gui
+  secretName: tap-gui-azure
