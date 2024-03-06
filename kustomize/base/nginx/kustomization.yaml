@@ -2,6 +2,7 @@
 resources: 
 - nginx-deployment.yaml
 - nginx-svc.yaml
+- namespace.yaml
 
 commonLabels:
   app: nginx01
