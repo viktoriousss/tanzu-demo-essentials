@@ -11,7 +11,6 @@ nameSuffix:
 
 patches:
 - path: patch-development.yaml
-- path: patch-namespace.yaml
 
 configMapGenerator:
 - name: nginx-config
