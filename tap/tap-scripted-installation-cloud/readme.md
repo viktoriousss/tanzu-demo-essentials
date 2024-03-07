@@ -17,4 +17,8 @@ You will need access to:
 * One of the public clouds (Amazon, Azure, Google) or a pre-provisioned K8S cluster and registry
 * Tanzu Net
 
-Script is tested on MacOS but will probably also work on Linux (after some minor adjustments). Note that deployment to EKS is not yet fully operational and work-in-progress.
+Script is tested on MacOS but will probably also work on Linux (after some minor adjustments). 
+
+To do:
+* Currently the script only supports automated deployment of an registry running on Azure.
+* Note that deployment to EKS is not yet fully operational and work-in-progress.
