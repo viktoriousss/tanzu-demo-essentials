@@ -1,13 +1,13 @@
 #!/bin/bash
 #
 # Set your environment variables
-TANZU_NET_USER=""                 # Useraccount for TanzuNet
-TANZU_NET_PASSWORD=""                     # Password for TanzuNet
-INGRESS_DOMAIN="tap.azure.viktoriouslab.nl"             # Your TAP environment is accesible at tap-gui.INGRESS_DOMAIN
+TANZU_NET_USER=""                                       # Useraccount for TanzuNet
+TANZU_NET_PASSWORD=""                                   # Password for TanzuNet
+INGRESS_DOMAIN="tap.cloud.viktoriouslab.nl"             # Your TAP environment is accesible at tap-gui.INGRESS_DOMAIN
 REPOSITORY_NAME=tap-deliveries                          # GitHub Repository for K8S deployment artifacts
 REPOSITORY_OWNER=viktoriousss                           # GitHub Repository login
-CLIENTID=""                         # You need to get this value from GitHub Developer Settings OAuth2 page
-CLIENTSECRET="" # You need to get this value from GitHub Developer Settings OAuth2 page
+CLIENTID=""                                             # You need to get this value from GitHub Developer Settings OAuth2 page
+CLIENTSECRET=""                                         # You need to get this value from GitHub Developer Settings OAuth2 page
 
 export TAP_VERSION="1.8.0"                              # TAP Version you're installing
 export TAP_VALUES="tap-values-cloud.yaml"               # TAP values file you're using
