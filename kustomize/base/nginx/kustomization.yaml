@@ -3,6 +3,8 @@ resources:
 - nginx-svc.yaml
 - namespace.yaml
 
+namespace: base
+
 commonLabels:
   app: nginx01
 
