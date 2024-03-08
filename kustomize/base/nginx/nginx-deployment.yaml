@@ -41,8 +41,7 @@ spec:
             type: RuntimeDefault
         image: nginx:latest
         ports:
-        - containerPort: 80
-        - containerPort: 80
+        - containerPort: 80        
         volumeMounts:
         - name: nginx-index-config
           mountPath: /usr/share/nginx/html
