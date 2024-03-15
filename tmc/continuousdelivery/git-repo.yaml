@@ -1,0 +1,13 @@
+fullName:
+  clusterGroupName: viktorious-gitops
+  name: github-viktorious-cert-manager
+  namespaceName: tanzu-continuousdelivery-resources  
+spec:
+  atomicSpec:
+    interval: 60s
+    ref: {}
+    url: https://github.com/viktoriousss/cert-manager.git
+type:
+  kind: GitRepository
+  package: vmware.tanzu.manage.v1alpha1.clustergroup.namespace.fluxcd.gitrepository
+  version: v1alpha1
