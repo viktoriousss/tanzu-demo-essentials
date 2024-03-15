@@ -1,11 +1,21 @@
 fullName:
   clusterGroupName: viktorious-gitops
-  name: github-viktorious-cert-manager01
+  name: github-viktorious-tanzu-demo-ess
 spec:
   atomicSpec:
     interval: 60s
     ref: {}
-    url: https://github.com/viktoriousss/cert-manager.git
+    #If you need to configure the additional settings you can use this
+    #
+    #ref: 
+    #  branch: branch
+    #  commit: commit
+    #  semver: semver
+    #  tag: tag
+    
+    #If you repo requires authentication you might want to attach a secret
+    #secretRef: github-viktorious
+    url: https://github.com/viktoriousss/tanzu-demo-essentials.git
 type:
   kind: GitRepository
   package: vmware.tanzu.manage.v1alpha1.clustergroup.namespace.fluxcd.gitrepository

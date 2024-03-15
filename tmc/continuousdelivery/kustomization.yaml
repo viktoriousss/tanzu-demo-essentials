@@ -1,0 +1,13 @@
+fullName:
+  clusterGroupName: viktorious-gitops
+  name: cert-manager
+spec:
+  atomicSpec:
+    interval: 60s
+    path: kustomize/base/cert-manager
+    source:
+      name: github-viktorious-tanzu-demo-ess
+type:
+  kind: Kustomization
+  package: vmware.tanzu.manage.v1alpha1.clustergroup.namespace.fluxcd.kustomization
+  version: v1alpha1
