@@ -1,7 +1,6 @@
 fullName:
   clusterGroupName: viktorious-gitops
-  name: github-viktorious-cert-manager
-  namespaceName: tanzu-continuousdelivery-resources  
+  name: github-viktorious-cert-manager01
 spec:
   atomicSpec:
     interval: 60s
