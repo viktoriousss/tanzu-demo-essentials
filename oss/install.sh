@@ -70,3 +70,9 @@ kubectl apply -f cilium-lb-ip-pool-with-selector.yaml
 
 # Optional: add hubble-svc if required
 kubectl apply -f hubble-svc.yaml
+
+# Setup default storage class 
+helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
+helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \
+    --set nfs.server=192.168.101.105 \
+    --set nfs.path=/exported/path
