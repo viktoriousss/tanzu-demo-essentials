@@ -17,8 +17,18 @@ net.bridge.bridge-nf-call-iptables  = 1
 net.bridge.bridge-nf-call-ip6tables = 1
 net.ipv4.ip_forward                 = 1
 EOF
+sudo sysctl --system
 
+# Setup the repository
+sudo apt-get install -y apt-transport-https ca-certificates curl
+sudo mkdir /etc/apt/keyrings
+echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+sudo apt-get update
+sudo apt-get upgrade
 
+# Download images
+sudo kubeadm config images pull
 
 # Initially Kubernetes cluster
 sudo kubeadm init --pod-network-cidr=10.10.0.0/16 --skip-phases=addon/kube-proxy
