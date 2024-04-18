@@ -1,0 +1,36 @@
+harborProject: harbor.<yourdomain>/tmc-sm
+dnsZone: tmc.<yourdomain>
+postgres:
+  userPassword: <yourpassword>
+  maxConnections: 300
+minio:
+  username: root
+  password: <yourpassword>
+contourEnvoy:
+  serviceType: LoadBalancer
+  #serviceAnnotations: # needed only when specifying load balancer controller specific config like preferred IP
+  #  ako.vmware.com/load-balancer-ip: "10.20.10.100"
+  # when using an auto-assigned IP instead of a preferred IP, please use the following key instead of the serviceAnnotations above
+  # loadBalancerClass: local
+oidc:
+  issuerType: pinniped
+  issuerURL: https://<tenant-id>.okta.com/oauth2/default
+  clientID: <clientid>
+  clientSecret: <clientsecret>
+certificateImport: true
+trustedCAs:
+  my-ca.pem: |-
+    -----BEGIN CERTIFICATE-----
+    CA of the signed ceriticates
+    -----END CERTIFICATE-----
+#alertmanager: # needed only if you want to turn on alerting
+#  criticalAlertReceiver:
+#    slack_configs:
+#    - send_resolved: false
+#      api_url: https://hooks.slack.com/services/...
+#      channel: '#<slack-channel-name>'
+telemetry:
+  ceipOptIn: false
+  eanNumber: "" 
+  ceipAgreement: false
+size: small
