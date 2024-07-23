@@ -4,7 +4,7 @@ resource "azurerm_resource_group" "tap-registry" {
 }
 
 resource "azurerm_container_registry" "acr" {
-  name                = "tapregistry20240205"
+  name                = "tapregistry20240603"
   resource_group_name = azurerm_resource_group.tap-registry.name
   location            = azurerm_resource_group.tap-registry.location
   sku                 = "Basic"

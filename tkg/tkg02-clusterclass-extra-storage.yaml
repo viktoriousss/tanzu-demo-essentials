@@ -2,7 +2,7 @@ apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
   name: tkg02
-  namespace: ns01
+  namespace: ns02
 spec:
   clusterNetwork:
     services:
@@ -12,7 +12,7 @@ spec:
     serviceDomain: "cluster.local"
   topology:
     class: tanzukubernetescluster
-    version: v1.25.7---vmware.3-fips.1-tkg.1
+    version: v1.26.13---vmware.1-fips.1-tkg.3
     controlPlane:
       replicas: 1
     workers:

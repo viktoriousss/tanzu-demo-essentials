@@ -1,0 +1,52 @@
+fullName:
+  managementClusterName: viktorious-mgmt #management-cluste-name
+  name: tkg02
+  orgId: 36d7d271-f94a-49d9-9d44-ec72432c9898 # Provide the Project_Id
+  provisionerName: ns01 #namespace in supervisor
+spec:
+  clusterGroupName: run
+  tmcManaged: true
+  topology:
+    clusterClass: tanzukubernetescluster
+    controlPlane:
+      metadata: {}
+      osImage:
+        arch: amd64
+        name: photon
+        version: "3"
+      replicas: 3
+    network:
+      pods:
+        cidrBlocks:
+        - 172.20.0.0/16
+      serviceDomain: cluster.local
+      services:
+        cidrBlocks:
+        - 10.96.0.0/16
+    nodePools:
+    - info:
+        name: md-0
+      spec:
+        class: node-pool
+        failureDomain: vmware-system-legacy
+        metadata: {}
+        osImage:
+          arch: amd64
+          name: photon
+          version: "3"
+        overrides:
+        - name: vmClass
+          value: best-effort-2xlarge
+        - name: storageClass
+          value: vc01cl01-t0compute
+        replicas: 4
+    variables:
+    - name: storageClass
+      value: vc01cl01-t0compute
+    - name: vmClass
+      value: best-effort-large
+    version: v1.26.13+vmware.1-fips.1-tkg.3
+type:
+  kind: TanzuKubernetesCluster
+  package: vmware.tanzu.manage.v1alpha1.managementcluster.provisioner.tanzukubernetescluster
+  version: v1alpha1

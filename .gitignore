@@ -16,11 +16,13 @@
 **/values-route53.yaml
 **/values.yaml
 **/tkg-cluster-locals.tf
+**/*.tgz
+**/*.pem
 tap/tap-scripted-installation-cloud/tanzu-cluster-essentials/*
 tap/tap-scripted-installation-cloud/tap-values-cloud.yaml
 tap/tap-scripted-installation-cloud/tap-install-cloud.sh
 tap/tap-scripted-installation-cloud/kubeconfig-tapaks
-tap/tap-scripted-installation-cloud/tanzu-cluster-essentials-darwin-amd64-1.7.3.tgz
 tap/tap-scripted-installation-cloud/tap-gui-azure.yaml
 tap/secrets/lsp-secrets.yaml
-tap/tap-scripted-installation-cloud/tanzu-cluster-essentials-darwin-amd64-1.8.0.tgz
+
+tmc-sm/values.yaml.old

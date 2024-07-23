@@ -22,7 +22,7 @@ spec:
           replicas: 1
     variables:
       - name: vmClass
-        value: best-effort-small
+        value: best-effort-xlarge
       - name: storageClass
         value: vc01cl01-t0compute
       - name: defaultStorageClass

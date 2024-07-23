@@ -23,23 +23,23 @@ spec:
       - key: "node.kubernetes.io/unreachable"
         operator: "Exists"
         effect: "NoExecute"
-        tolerationSeconds: 10
+        tolerationSeconds: 120
       - key: "node.kubernetes.io/not-ready"
         operator: "Exists"
         effect: "NoExecute"
-        tolerationSeconds: 10	
+        tolerationSeconds: 120
       containers:
       - name: nginx04
         image: nginx:latest
         ports:
         - containerPort: 80
-        startupProbe:
-          httpGet:
-            path: /pvc.html
-            port: 80
-          initialDelaySeconds: 5
-          periodSeconds: 5
-          failureThreshold: 3
+        #startupProbe:
+        #  httpGet:
+        #    path: /pvc.html
+        #    port: 80
+        #  initialDelaySeconds: 5
+        #  periodSeconds: 5
+        #  failureThreshold: 3
         volumeMounts:
         - mountPath: "/usr/share/nginx/html"
           name: pvc04

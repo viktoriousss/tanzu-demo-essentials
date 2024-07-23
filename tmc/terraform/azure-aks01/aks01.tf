@@ -15,7 +15,7 @@ resource "tanzu-mission-control_akscluster" "AKS01" {
     
     config {
       location           = "westeurope"
-      kubernetes_version = "1.26.6"
+      kubernetes_version = "1.27.9"
       network_config {
         dns_prefix = "aks01-dns"
       }

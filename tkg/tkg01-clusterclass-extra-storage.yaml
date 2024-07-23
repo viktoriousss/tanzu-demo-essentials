@@ -19,7 +19,7 @@ spec:
       machineDeployments:
         - class: node-pool
           name: node-pool-1
-          replicas: 4
+          replicas: 3
     variables:
       - name: vmClass
         value: best-effort-2xlarge
@@ -53,5 +53,4 @@ spec:
             storage: 125G
           mountPath: /var/lib/kubelet
           name: kubelet
-          storageClass: vc01cl01-t0compute           
-          
+          storageClass: vc01cl01-t0compute
