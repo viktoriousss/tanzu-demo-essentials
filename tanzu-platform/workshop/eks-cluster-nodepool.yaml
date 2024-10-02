@@ -1,5 +1,5 @@
 fullName:
- credentialName: nemea-sa-eks-lcm
+ credentialName: <your-credential>
  eksClusterName: viktoriouscluster01
  name: default-node-pool
  region: eu-west-1

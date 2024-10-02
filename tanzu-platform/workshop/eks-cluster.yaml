@@ -1,6 +1,6 @@
 # Add name of your cluster, and labels below
 fullName:
- credentialName: nemea-sa-eks-lcm
+ credentialName: <your-credential>
  name: viktoriouscluster01
  region: eu-west-1
 meta:
