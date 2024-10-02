@@ -1,0 +1,27 @@
+fullName:
+ credentialName: nemea-sa-eks-lcm
+ eksClusterName: viktoriouscluster01
+ name: default-node-pool
+ region: eu-west-1
+spec:
+ amiType: AL2_x86_64
+ capacityType: SPOT
+ instanceTypes:
+ - t3.xlarge
+ roleArn: <set-your-role-arn-here>
+ rootDiskSize: 20
+ scalingConfig:
+   desiredSize: 3
+   maxSize: 4
+   minSize: 3
+ subnetIds:
+ - subnet-<id-here>
+ - subnet-<id-here>
+ - subnet-<id-here>
+ - subnet-<id-here>
+ updateConfig:
+   maxUnavailableNodes: "1"
+type:
+ kind: Nodepool
+ package: vmware.tanzu.manage.v1alpha1.ekscluster.nodepool
+ version: v1alpha1

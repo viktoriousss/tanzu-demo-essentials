@@ -1,0 +1,32 @@
+# Add name of your cluster, and labels below
+fullName:
+ credentialName: nemea-sa-eks-lcm
+ name: viktoriouscluster01
+ region: eu-west-1
+meta:
+ labels:
+   env: dev
+   location: ireland
+   owner: vvandenberg
+spec:
+ clusterGroupName: run
+ config:
+   logging:
+     apiServer: true
+     authenticator: true
+   roleArn: <set-your-role-arn-here>
+   version: "1.29"
+   vpc:
+     enablePrivateAccess: true
+     enablePublicAccess: true
+     publicAccessCidrs:
+     - 0.0.0.0/0
+     subnetIds:
+     - subnet-<id-here>
+     - subnet-<id-here>
+     - subnet-<id-here>
+     - subnet-<id-here>
+type:
+ kind: EksCluster
+ package: vmware.tanzu.manage.v1alpha1.ekscluster
+ version: v1alpha1

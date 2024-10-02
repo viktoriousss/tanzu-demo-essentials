@@ -1,0 +1,25 @@
+#l;skdjfsjdf
+---
+apiVersion: spaces.tanzu.vmware.com/v1alpha1
+kind: AvailabilityTarget
+metadata:
+ name: viktorious-at02
+spec:
+ affinity:
+   clusterAffinity:
+     clusterSelectorTerms:
+       - matchExpressions:
+           - key: tmc.cloud.vmware.com/creator
+             operator: In
+             values:
+               - vvandenberg
+           - key: location
+             operator: In
+             values:
+               - ireland
+           - key: owner
+             operator: In
+             values: 
+               - vvandenberg
+   clusterAntiAffinity:
+     clusterSelectorTerms: []
