@@ -1,0 +1,11 @@
+type:
+   kind: ClusterGroup
+   package: vmware.tanzu.manage.v1alpha1.clustergroup
+   version: v1alpha1
+fullName:
+   name: "viktorious01"
+meta:
+   description: "My first Cluster Group"
+spec:
+   integrations:
+      - TANZU_APPLICATION_ENGINE # TAE-enabled
