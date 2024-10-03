@@ -1,0 +1,20 @@
+ apiVersion: spaces.tanzu.vmware.com/v1alpha1
+ kind: Space
+ metadata:
+   name: viktorious-space01
+ spec:
+   template:
+     spec:
+       profiles:
+       - name: spring-dev.tanzu.vmware.com
+       - name: viktoriousprofile01          # This profile contains the networking settings
+       - name: viktorious-registry-profile  # This profile is used to get access to a private registry
+       resources:
+         limits:
+           cpu: 5000m
+           memory: 10Gi
+   availabilityTargets:
+   - name: viktorious-at01                  # Space can use the availability target defined in avt.yaml
+     replicas: 1
+   updateStrategy:
+     type: RollingUpdate
