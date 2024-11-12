@@ -1,0 +1,53 @@
+apiVersion: v1
+items:
+- apiVersion: servicebinding.io/v1
+  kind: ServiceBinding
+  metadata:
+    creationTimestamp: "2024-10-14T08:45:49Z"
+    finalizers:
+    - servicebinding.io/finalizer
+    generation: 1
+    name: psql-9xykj
+    namespace: viktorious-space03-fbdc7cbfb-l8jxb
+    ownerReferences:
+    - apiVersion: services.tanzu.vmware.com/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ServiceBinding
+      name: psql-9xykj
+      uid: b7a4c85f-8438-477b-bb4c-c0e4ba8440e1
+    resourceVersion: "30302803"
+    uid: f4b44be5-7ac5-4338-8506-1b3a8a578d24
+  spec:
+    name: psqlinclusion
+    service:
+      apiVersion: bitnami.database.tanzu.vmware.com/v1alpha1
+      kind: PostgreSQLInstance
+      name: psql
+    workload:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: inclusionapp
+  status:
+    binding:
+      name: 302554e5-07d9-4b18-b103-4ca69da2e7bc
+    conditions:
+    - lastTransitionTime: "2024-10-14T08:52:51Z"
+      message: ""
+      reason: ServiceBound
+      status: "True"
+      type: Ready
+    - lastTransitionTime: "2024-10-14T08:46:10Z"
+      message: ""
+      reason: ResolvedBindingSecret
+      status: "True"
+      type: ServiceAvailable
+    - lastTransitionTime: "2024-10-14T08:52:51Z"
+      message: ""
+      reason: WorkloadProjected
+      status: "True"
+      type: WorkloadProjected
+    observedGeneration: 1
+kind: List
+metadata:
+  resourceVersion: ""

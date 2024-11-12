@@ -1,0 +1,11 @@
+apiVersion: networking.tanzu.vmware.com/v1alpha1
+kind: EgressPoint
+metadata:
+  name: psql
+spec:
+  targets:
+  - hosts:
+    - 10.100.184.42
+    port:
+      number: 5432
+      protocol: TCP

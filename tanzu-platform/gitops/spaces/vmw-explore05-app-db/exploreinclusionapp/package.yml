@@ -1,0 +1,31 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  annotations:
+    apps.tanzu.vmware.com/promotable: ""
+    apps.tanzu.vmware.com/promote-group: ContainerApp/exploreinclusionapp
+  creationTimestamp: null
+  name: exploreinclusionapp.apps.local.20241024.2156.11708
+spec:
+  refName: exploreinclusionapp.apps.local
+  releasedAt: "2024-10-24T22:00:13Z"
+  template:
+    spec:
+      deploy:
+      - kapp:
+          rawOptions:
+          - --wait=false
+      fetch:
+      - imgpkgBundle:
+          image: harbor.main.emea.end2end.link/viktorious/exploreinclusionapp@sha256:8a5b28d5e0234c823e78e4b1e0d83de6504439a9b0745768717f0bfef8b64399
+      template:
+      - ytt:
+          paths:
+          - config/
+      - kbld:
+          paths:
+          - .imgpkg/images.yml
+          - '-'
+  valuesSchema:
+    openAPIv3: null
+  version: 20241024.2156.11708

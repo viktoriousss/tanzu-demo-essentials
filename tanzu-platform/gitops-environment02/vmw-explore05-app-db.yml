@@ -1,0 +1,18 @@
+ apiVersion: spaces.tanzu.vmware.com/v1alpha1
+ kind: Space
+ metadata:
+   name: vmw-explore05-app-db
+ spec:
+   template:
+     spec:
+       profiles:
+       - name: explore-profile05        
+       resources:
+         limits:
+           cpu: 5000m
+           memory: 10Gi
+   availabilityTargets:
+   - name: emea
+     replicas: 1
+   updateStrategy:
+     type: RollingUpdate

@@ -1,0 +1,21 @@
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+  annotations:
+    apps.tanzu.vmware.com/promotable: ""
+    apps.tanzu.vmware.com/promote-group: ContainerApp/exploreinclusionapp
+  creationTimestamp: null
+  name: exploreinclusionapp
+spec:
+  packageRef:
+    refName: exploreinclusionapp.apps.local
+    versionSelection:
+      constraints: 20241024.2156.11708
+  serviceAccountName: carvel-package-installer
+  values:
+  - secretRef:
+      name: exploreinclusionapp-values
+status:
+  conditions: null
+  friendlyDescription: ""
+  observedGeneration: 0

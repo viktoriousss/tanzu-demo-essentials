@@ -1,0 +1,104 @@
+apiVersion: spaces.tanzu.vmware.com/v1alpha1
+kind: Profile
+metadata:
+  name: explore-profile05
+spec:
+  requiredCapabilities:
+  - name: mtls.tanzu.vmware.com
+  - name: crosscluster.tanzu.vmware.com
+  - name: crossplane.tanzu.vmware.com
+  - name: fluxcd-helm.tanzu.vmware.com
+  - name: fluxcd-source.tanzu.vmware.com
+  - name: bitnami.services.tanzu.vmware.com
+  - name: config-server.spring.tanzu.vmware.com
+  - name: servicebinding.tanzu.vmware.com
+  - name: tanzu-servicebinding.tanzu.vmware.com
+  - name: container-app.tanzu.vmware.com
+  - name: k8sgateway.tanzu.vmware.com
+  - name: service-registry.spring.apps.tanzu.vmware.com
+  - name: package-management.tanzu.vmware.com
+  - name: certificates.tanzu.vmware.com
+  - name: spring-cloud-gateway.tanzu.vmware.com
+  - name: egress.tanzu.vmware.com
+  - name: observability.tanzu.vmware.com
+  - name: servicemesh-observability.tanzu.vmware.com
+  - name: multicloud-ingress.tanzu.vmware.com
+  - name: registry-pull-only-credentials-installer.tanzu.vmware.com
+  traits:
+  - alias: multicloud-cert-manager.tanzu.vmware.com
+    name: multicloud-cert-manager.tanzu.vmware.com
+    values:
+      inline:
+        multicloud-cert-manager.tanzu.vmware.com:
+          duration: 87600h
+          name: default-issuer
+          privateKey:
+            algorithm: ECDSA
+            size: 384
+          renewBefore: 2160h
+          selfSigned:
+            commonName: ca.company.biz
+            secretName: root-secret
+  - alias: carvel-package-installer.tanzu.vmware.com
+    name: carvel-package-installer.tanzu.vmware.com
+    values:
+      inline:
+        carvel-package-installer:
+          serviceAccountName: carvel-package-installer
+  - alias: api-gateway.spring.tanzu.vmware.com
+    name: api-gateway.spring.tanzu.vmware.com
+    values:
+      inline:
+        gateway:
+          api:
+            cors:
+              maxAge: 0
+            version: unspecified
+          count: 1
+          gateway:
+            name: spring-cloud-gateway
+          healthCheck:
+            enabled: false
+            interval: 25s
+          sso:
+            inactive-session-expiration-in-minutes: 0
+  - alias: egress.tanzu.vmware.com
+    name: egress.tanzu.vmware.com
+    values:
+      inline:
+        egress.tanzu.vmware.com:
+          open: true
+  - alias: observability.tanzu.vmware.com
+    name: observability.tanzu.vmware.com
+    values:
+      inline:
+        observability-traits.tanzu.vmware.com:
+          enabled: true
+  - alias: multicloud-ingress.tanzu.vmware.com
+    name: multicloud-ingress.tanzu.vmware.com
+    values:
+      inline:
+        multicloud-ingress.tanzu.vmware.com:
+          domain: explore05.viktoriouslab.nl
+          gslb:
+            authentication:
+              credentialRef: 95745ff026b37a35bd8025a716a19c5e
+            dns:
+              zoneId: Z01723648L10T9ZXKW6K
+          listenerTemplates:
+          - namePrefix: https-
+            port: 443
+            protocol: HTTPS
+            tls:
+              secretRef: prod-certs
+          - namePrefix: http-
+            port: 80
+            protocol: HTTP
+          name: default-gateway
+          useClusterIssuer: false
+  - alias: fluxcd-helmrelease-installer.tanzu.vmware.com
+    name: fluxcd-helmrelease-installer.tanzu.vmware.com
+    values:
+      inline:
+        fluxcd-helmrelease-installer:
+          serviceAccountName: fluxcd-helmrelease-installer
